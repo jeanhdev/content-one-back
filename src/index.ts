@@ -16,6 +16,8 @@ import { ServerCtx } from "./types";
 import sendEmail from "./utils/mailer";
 import { CategoryResolver } from "./resolver/category";
 
+const PORT = process.env.port || 4000;
+
 createConnection()
   .then(async () => {
     const app = express();
@@ -51,7 +53,7 @@ createConnection()
       cors: { origin: "http://localhost:3000", credentials: true }
     });
 
-    app.listen(4000, () => {
+    app.listen(PORT, () => {
       console.log("Started listening on port 4000");
     });
   })
