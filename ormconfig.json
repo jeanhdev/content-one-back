@@ -8,7 +8,9 @@
    "synchronize": true,
    "logging": false,
    "extra": {
-      "ssl": true
+      "ssl": {
+         "rejectUnauthorized": false
+      }
    },
    "entities": [
       "src/entity/**/*.ts"
