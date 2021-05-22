@@ -16,7 +16,7 @@ import { ServerCtx } from "./types";
 import sendEmail from "./utils/mailer";
 import { CategoryResolver } from "./resolver/category";
 
-const PORT = process.env.port || 4000;
+const PORT = process.env.PORT || 4000;
 
 createConnection()
   .then(async () => {
