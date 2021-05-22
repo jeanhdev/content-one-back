@@ -7,6 +7,9 @@
    "database": "d13fnte3jtl9qi",
    "synchronize": true,
    "logging": false,
+   "extra": {
+      "ssl": true
+   },
    "entities": [
       "src/entity/**/*.ts"
    ],
