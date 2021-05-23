@@ -33,10 +33,10 @@ createConnection()
         name: "qid",
         store: new RedisStore({ client: redis, disableTouch: true }),
         cookie: {
-          path: "/",
+          domain: ".herokuapp.com",
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
-          sameSite: "lax", // csrf
+          sameSite: "strict", // csrf
           secure: __prod__
         },
         proxy: true,
