@@ -24,7 +24,7 @@ createConnection()
     app.set("trust proxy", 1);
     app.use(
       cors({
-        origin: "https://content-one-front.herokuapp.com",
+        origin: "https://content-one-front.herokuapp.com/",
         credentials: true
       })
     );
@@ -36,7 +36,7 @@ createConnection()
           domain: ".herokuapp.com",
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
-          sameSite: "strict", // csrf
+          sameSite: "none", // csrf
           secure: __prod__
         },
         proxy: true,
