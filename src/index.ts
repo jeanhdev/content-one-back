@@ -50,7 +50,10 @@ createConnection()
 
     apolloServer.applyMiddleware({
       app,
-      cors: { origin: "http://localhost:3000", credentials: true }
+      cors: {
+        origin: "https://content-one-front.vercel.app/",
+        credentials: true
+      }
     });
 
     app.listen(PORT, () => {
