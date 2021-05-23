@@ -39,8 +39,8 @@ createConnection()
         cookie: {
           domain: "https://content-one-front.vercel.app",
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
-          httpOnly: false,
-          // sameSite: "lax", // csrf
+          httpOnly: true,
+          sameSite: "lax", // csrf
           secure: __prod__
         },
         saveUninitialized: false,
