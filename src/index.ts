@@ -1,8 +1,5 @@
 import "reflect-metadata";
-import { createConnection, createQueryBuilder } from "typeorm";
-import { Category } from "./entity/Category";
-import { Feed } from "./entity/Feed";
-import { User } from "./entity/User";
+import { createConnection } from "typeorm";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
@@ -14,9 +11,7 @@ import cors from "cors";
 import Redis from "ioredis";
 import { __prod__ } from "./helpers";
 import { ServerCtx } from "./types";
-import sendEmail from "./utils/mailer";
 import { CategoryResolver } from "./resolver/category";
-import { domain } from "process";
 
 // const PORT = process.env.PORT || 4000;
 
@@ -24,13 +19,12 @@ createConnection()
   .then(async () => {
     const app = express();
     // The order that you'll run the middleware is the the order they'll run (yes, therefore redis b4 apollo)
-
     const RedisStore = connectRedis(session);
     const redis = new Redis(process.env.REDIS_URL);
     app.set("trust proxy", 1);
     app.use(
       cors({
-        origin: "https://content-one-front.vercel.app",
+        origin: "https://content-one-front.herokuapp.com",
         credentials: true
       })
     );
