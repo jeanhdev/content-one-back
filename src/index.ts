@@ -16,7 +16,7 @@ import { ServerCtx } from "./types";
 import sendEmail from "./utils/mailer";
 import { CategoryResolver } from "./resolver/category";
 
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
 
 createConnection()
   .then(async () => {
@@ -58,8 +58,8 @@ createConnection()
       }
     });
 
-    app.listen(PORT, () => {
-      console.log("Started listening on port 4000");
+    app.listen(Number(process.env.PORT), "0.0.0.0", () => {
+      console.log("Running");
     });
   })
   .catch((error) => console.log(error));
