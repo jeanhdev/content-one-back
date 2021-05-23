@@ -38,7 +38,7 @@ createConnection()
         name: "qid",
         store: new RedisStore({ client: redis, disableTouch: true }),
         cookie: {
-          domain: "https://content-one-front.vercel.app",
+          path: "/",
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
           sameSite: "lax", // csrf
