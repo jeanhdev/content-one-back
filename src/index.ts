@@ -26,6 +26,7 @@ createConnection()
 
     const RedisStore = connectRedis(session);
     const redis = new Redis(process.env.REDIS_URL);
+    app.set("trust proxy", 1);
     app.use(
       cors({
         origin: "https://content-one-front.vercel.app",
@@ -58,10 +59,7 @@ createConnection()
 
     apolloServer.applyMiddleware({
       app,
-      cors: {
-        origin: "https://content-one-front.vercel.app",
-        credentials: true
-      }
+      cors: false
     });
 
     app.listen(Number(process.env.PORT), "0.0.0.0", () => {
