@@ -10,6 +10,7 @@ import { FeedResolver } from "./resolver/feed";
 import { UserResolver } from "./resolver/user";
 import session from "express-session";
 import connectRedis from "connect-redis";
+import cors from "cors";
 import Redis from "ioredis";
 import { __prod__ } from "./helpers";
 import { ServerCtx } from "./types";
@@ -25,13 +26,18 @@ createConnection()
 
     const RedisStore = connectRedis(session);
     const redis = new Redis(process.env.REDIS_URL);
-
+    app.use(
+      cors({
+        origin: "https://content-one-front.vercel.app",
+        credentials: true
+      })
+    );
     app.use(
       session({
         name: "qid",
         store: new RedisStore({ client: redis, disableTouch: true }),
         cookie: {
-          domain: "https://content-one-front.vercel.app/",
+          domain: "https://content-one-front.vercel.app",
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: false,
           // sameSite: "lax", // csrf
@@ -53,7 +59,7 @@ createConnection()
     apolloServer.applyMiddleware({
       app,
       cors: {
-        origin: "https://content-one-front.vercel.app/",
+        origin: "https://content-one-front.vercel.app",
         credentials: true
       }
     });
