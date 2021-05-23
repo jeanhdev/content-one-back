@@ -33,10 +33,9 @@ createConnection()
         name: "qid",
         store: new RedisStore({ client: redis, disableTouch: true }),
         cookie: {
-          path: "/",
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
-          sameSite: "none", // csrf
+          sameSite: "lax", // csrf
           secure: __prod__
         },
         proxy: true,
