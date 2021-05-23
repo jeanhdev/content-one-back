@@ -35,10 +35,10 @@ createConnection()
         cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
-          sameSite: "lax", // csrf
+          sameSite: "none", // csrf
           secure: __prod__
         },
-        proxy: true,
+        //proxy: true,
         saveUninitialized: false,
         secret: "m0z6l{z!`s6ngiSAz')IYH18T0W)y[",
         resave: false
