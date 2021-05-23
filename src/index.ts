@@ -24,7 +24,7 @@ createConnection()
     app.set("trust proxy", 1);
     app.use(
       cors({
-        origin: "https://content-one-front.herokuapp.com/",
+        origin: "https://content-one-front.herokuapp.com",
         credentials: true
       })
     );
