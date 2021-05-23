@@ -16,6 +16,7 @@ import { __prod__ } from "./helpers";
 import { ServerCtx } from "./types";
 import sendEmail from "./utils/mailer";
 import { CategoryResolver } from "./resolver/category";
+import { domain } from "process";
 
 // const PORT = process.env.PORT || 4000;
 
@@ -42,7 +43,8 @@ createConnection()
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
           sameSite: "lax", // csrf
-          secure: __prod__
+          secure: __prod__,
+          domain: ".vercel.app"
         },
         saveUninitialized: false,
         secret: "m0z6l{z!`s6ngiSAz')IYH18T0W)y[",
