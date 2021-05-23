@@ -24,7 +24,8 @@ createConnection()
     // The order that you'll run the middleware is the the order they'll run (yes, therefore redis b4 apollo)
 
     const RedisStore = connectRedis(session);
-    const redis = new Redis();
+    const redis = new Redis(process.env.REDIS_URL);
+
     app.use(
       session({
         name: "qid",
@@ -32,8 +33,8 @@ createConnection()
         cookie: {
           domain: "https://content-one-front.vercel.app/",
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
-          httpOnly: true,
-          sameSite: "lax", // csrf
+          httpOnly: false,
+          // sameSite: "lax", // csrf
           secure: __prod__
         },
         saveUninitialized: false,
