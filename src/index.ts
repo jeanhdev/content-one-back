@@ -58,7 +58,7 @@ createConnection()
       cors: false
     });
 
-    app.listen(Number(process.env.PORT), "0.0.0.0", () => {
+    app.listen(parseInt(process.env.PORT!), () => {
       console.log("Running");
     });
   })
