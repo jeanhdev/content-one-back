@@ -43,9 +43,9 @@ createConnection()
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
           sameSite: "lax", // csrf
-          secure: __prod__,
-          domain: ".vercel.app"
+          secure: __prod__
         },
+        proxy: true,
         saveUninitialized: false,
         secret: "m0z6l{z!`s6ngiSAz')IYH18T0W)y[",
         resave: false
