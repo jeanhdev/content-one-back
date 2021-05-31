@@ -4,12 +4,11 @@ import {
   Column,
   ManyToOne,
   BaseEntity,
-  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn
 } from "typeorm";
 import { Category } from "./Category";
-import { Field, ID, Int, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()

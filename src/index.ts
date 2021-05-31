@@ -13,7 +13,7 @@ import { __prod__ } from "./helpers";
 import { ServerCtx } from "./types";
 import { CategoryResolver } from "./resolver/category";
 
-// const PORT = process.env.PORT || 4000;
+const PORT = parseInt(process.env.PORT as string) || 4000;
 
 createConnection()
   .then(async () => {
@@ -35,7 +35,7 @@ createConnection()
         cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
           httpOnly: true,
-          sameSite: "none", // csrf
+          sameSite: "none",
           secure: __prod__
         },
         //proxy: true,
@@ -57,7 +57,7 @@ createConnection()
       cors: false
     });
 
-    app.listen(parseInt(process.env.PORT!), () => {
+    app.listen(PORT!, () => {
       console.log("Running");
     });
   })
